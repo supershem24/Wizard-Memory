@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Card : MonoBehaviour
 {
@@ -15,14 +16,15 @@ public class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("Flip!");
-        }*/
+            Flip();
+        }
+       
     }
 
     void Flip()
     {
-        //gameObject.transform.rotation.y += -180;
+        Debug.Log("Hello");
     }
 }
