@@ -39,7 +39,7 @@ public class Deck : MonoBehaviour
     }
 
     //UNTESTED
-    Card DealCard()
+    public Card DealCard()
     {
         if (deckCards.Count <= 0)
             Debug.LogError("NO MORE CARDS IN DECK"); return null;
