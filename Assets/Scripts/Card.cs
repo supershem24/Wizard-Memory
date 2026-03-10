@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
@@ -5,7 +6,8 @@ public class Card : MonoBehaviour
 {
 
     string color;
-    string name;
+    string ingridient;
+    public int testNum;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,5 +28,11 @@ public class Card : MonoBehaviour
     void Flip()
     {
         Debug.Log("Hello");
+    }
+
+    public void ChangeCardNumber(int num)
+    {
+        testNum = num;
+        gameObject.GetComponentInChildren<TMP_Text>().text = num.ToString();
     }
 }

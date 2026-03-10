@@ -1,17 +1,19 @@
 using System.Runtime.CompilerServices;
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 public class Deck : MonoBehaviour
 {
 
-    public List<Card> deckCards;
+    [SerializeField]
+    public List<int> deckCards;
+    public GameObject cardPrefab;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        ShuffleDeck();
-        DealCard();
+
     }
 
     // Update is called once per frame
@@ -21,31 +23,43 @@ public class Deck : MonoBehaviour
     }
 
     //UNTESTED
-    void ShuffleDeck()
+    public void ShuffleDeck()
     {
-        List<Card> newCards = new List<Card>(deckCards.Count);
+        int temp;
         for (int i = 0;  i < deckCards.Count; i++)
         {
             int rand = Random.Range(0, deckCards.Count - 1);
-            if (newCards[rand] != null)
-            {
-                i--;
-                continue;
-            }
 
-            newCards[rand] = deckCards[i];
+            temp = deckCards[i];
+            deckCards[i] = deckCards[rand];
+            deckCards[rand] = temp;
         }
-        deckCards = newCards;
     }
 
     //UNTESTED
     public Card DealCard()
     {
         if (deckCards.Count <= 0)
-            Debug.LogError("NO MORE CARDS IN DECK"); return null;
+        {
+            Debug.LogError("NO MORE CARDS IN DECK"); 
+            return null;
+        }
 
-        Card card = deckCards[-1];
+        //TESTING STUFF BEGIN
+        GameObject card = Instantiate<GameObject>(cardPrefab);
+        card.GetComponent<Card>().ChangeCardNumber(deckCards[deckCards.Count - 1]);
+        //TESTING STUFF END
+
         deckCards.RemoveAt(deckCards.Count - 1);
-        return card;
+        return card.GetComponent<Card>();
+    }
+
+    public void CreateSampleDeck(int num)
+    {
+        for(int i = 0; i < num; i++)
+        {
+            deckCards.Add(i+1);
+        }
+        
     }
 }

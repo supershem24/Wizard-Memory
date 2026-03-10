@@ -7,12 +7,13 @@ public class Table : MonoBehaviour
 
     [SerializeField]
     public Deck currentDeck;
-
     Card[][] field; //PLACEHOLDER FOR PHYSICAL PLACE
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        currentDeck.CreateSampleDeck(40);
+        currentDeck.ShuffleDeck();
         SetUpLayout();
     }
 
@@ -33,7 +34,9 @@ public class Table : MonoBehaviour
             field[i] = new Card[LAYOUTHEIGHT];
             for(int j = 0; j < LAYOUTHEIGHT; j++)
             {
+                
                 currentCard = currentDeck.DealCard();
+                Debug.Log(currentCard.testNum);
                 field[i][j] = currentCard;
             }
         }
