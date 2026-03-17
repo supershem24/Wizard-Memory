@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d6367834f25edab48ba9957ddf614af1
+guid: 3661793329ab5a24c9d098ad2ea615e7
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_Board
-    second: {fileID: 2100000, guid: 324772990cfe95c43b35f79e4cc74afb, type: 2}
+      name: M_Bag
+    second: {fileID: 2100000, guid: e334fee76bc068e469cd7e923a36d803, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
