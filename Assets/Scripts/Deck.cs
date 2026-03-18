@@ -72,10 +72,13 @@ public class Deck : MonoBehaviour
     //Sameple deck of numbers
     public void CreateSampleDeck(int num)
     {
-        for(int i = 0; i < num; i++)
+        deckCards.Clear();
+
+        for (int i = 0; i < num; i++)
         {
-            deckCards.Add(i+1);
+            deckCards.Add(i + 1);
+            deckCards.Add(i + 1);
         }
-        
+
     }
 }

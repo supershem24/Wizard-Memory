@@ -10,6 +10,9 @@ public class Card : MonoBehaviour
     string rarity;
     public int testNum;
 
+    public int gridX;
+    public int gridY;
+
     private bool isFlipped = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -52,5 +55,11 @@ public class Card : MonoBehaviour
     {
         testNum = num;
         gameObject.GetComponentInChildren<TMP_Text>().text = num.ToString();
+    }
+
+    public void SetGridPosition(int x, int y)
+    {
+        gridX = x;
+        gridY = y;
     }
 }

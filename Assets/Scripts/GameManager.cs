@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public Table table;
 
     private Card firstCard;
     private Card secondCard;
@@ -44,17 +45,27 @@ public class GameManager : MonoBehaviour
 
     void CheckMatch()
     {
+        playerTurn = false;
+
         if (firstCard.testNum == secondCard.testNum)
         {
             Debug.Log("Match!");
-            ResetSelection();
-            Invoke(nameof(EnablePlayerTurn), 0.5f);   
+            Invoke(nameof(HandleMatch), 2f);
         }
         else
         {
             Debug.Log("No match!");
             Invoke(nameof(ResetCards), 1f);
         }
+    }
+
+    void HandleMatch()
+    {
+        table.ReplaceCard(firstCard);
+        table.ReplaceCard(secondCard);
+
+        ResetSelection();
+        EnablePlayerTurn();
     }
 
     void ResetCards()
@@ -76,4 +87,6 @@ public class GameManager : MonoBehaviour
     {
         playerTurn = true;
     }
+
+
 }
