@@ -4,6 +4,13 @@ public class Table : MonoBehaviour
 {
     const int LAYOUTWIDTH = 4;
     const int LAYOUTHEIGHT = 4;
+    const float CARDPLACEMENTHEIGHT = 0.5f;
+
+    [SerializeField]
+    Vector3 TABLECENTER;
+    float GRIDGAP = 1.4f; //Gap between centers of cards
+    const float CARDWIDTH = 1;
+    const float CARDHEIGHT = 1;
 
     [SerializeField]
     public Deck currentDeck;
@@ -12,6 +19,7 @@ public class Table : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        TABLECENTER = gameObject.transform.position;
         currentDeck.CreateSampleDeck(40);
         currentDeck.ShuffleDeck();
         SetUpLayout();
@@ -36,6 +44,7 @@ public class Table : MonoBehaviour
             {
                 
                 currentCard = currentDeck.DealCard();
+                currentCard.transform.position = new Vector3(TABLECENTER.x + GRIDGAP*(1.5f-i), TABLECENTER.y + CARDPLACEMENTHEIGHT, TABLECENTER.z + GRIDGAP * (1.5f - j) + 0.7f);
                 Debug.Log(currentCard.testNum);
                 field[i][j] = currentCard;
             }
