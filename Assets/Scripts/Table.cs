@@ -31,7 +31,7 @@ public class Table : MonoBehaviour
         
     }
 
-    //UNFINISHED
+    //Setting up on layout based on grid pattern
     void SetUpLayout()
     {
         field = new Card[LAYOUTWIDTH][];

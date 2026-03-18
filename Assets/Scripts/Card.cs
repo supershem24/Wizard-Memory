@@ -33,18 +33,21 @@ public class Card : MonoBehaviour
         }
     }
 
+    //Flip the Card faceup
     public void Flip()
     {
         isFlipped = true;
         transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
+    //Flip the Card facedown
     public void ResetCard()
     {
         isFlipped = false;
         transform.rotation = Quaternion.Euler(0, 0, 180);
     }
 
+    //Testing for changing the card number, probably have to do this with the other attruibutes of the card
     public void ChangeCardNumber(int num)
     {
         testNum = num;
