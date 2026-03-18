@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static bool playerTurn;
 
+    // SHION: Three things
+    // A. Make flipping cards have a delay as to not keep cards flipped through spam
+    // B. Make the deck have cards that match to actually test matching cards
+    // C. Make matching cards leave the game board, and put new cards from the deck in those places.
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
