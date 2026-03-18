@@ -34,9 +34,10 @@ public class GameManager : MonoBehaviour
         {
             firstCard = card;
         }
-        else if (secondCard == null)
+        else if (secondCard == null && card != firstCard)
         {
             secondCard = card;
+            playerTurn = false;
             CheckMatch();
         }
     }
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Match!");
             ResetSelection();
+            Invoke(nameof(EnablePlayerTurn), 0.5f);   
         }
         else
         {
@@ -60,11 +62,18 @@ public class GameManager : MonoBehaviour
         firstCard.ResetCard();
         secondCard.ResetCard();
         ResetSelection();
+
+        EnablePlayerTurn();
     }
 
     void ResetSelection()
     {
         firstCard = null;
         secondCard = null;
+    }
+
+    void EnablePlayerTurn()
+    {
+        playerTurn = true;
     }
 }

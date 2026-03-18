@@ -6,7 +6,7 @@ public class Card : MonoBehaviour
 {
 
     string color;
-    string ingridient;
+    string ingredient;
     string rarity;
     public int testNum;
 
