@@ -6,11 +6,15 @@ public class GameManager : MonoBehaviour
     private Card firstCard;
     private Card secondCard;
 
+    public static GameManager instance;
+    public static bool playerTurn;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        playerTurn = true;
+        instance = this;
     }
 
     // Update is called once per frame

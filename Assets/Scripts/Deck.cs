@@ -53,18 +53,14 @@ public class Deck : MonoBehaviour
         //deckCards.RemoveAt(deckCards.Count - 1);
         //return card.GetComponent<Card>();
 
-        // Instantiate the card prefab
+        // Create the Card
         GameObject card = Instantiate(cardPrefab);
-
-        // Get the Card script from the instantiated object
         Card c = card.GetComponent<Card>();
+        c.ResetCard();
 
         // Assign number
         int value = deckCards[deckCards.Count - 1];
         c.ChangeCardNumber(value);
-
-        // Assign GameManager
-        c.manager = GameObject.FindAnyObjectByType<GameManager>();
 
         // Remove the card from the deck
         deckCards.RemoveAt(deckCards.Count - 1);

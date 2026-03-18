@@ -12,9 +12,6 @@ public class Card : MonoBehaviour
 
     private bool isFlipped = false;
 
-    // Reference GameManager script
-    public GameManager manager;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,23 +26,23 @@ public class Card : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (!isFlipped)
+        if (GameManager.playerTurn && !isFlipped)
         {
             Flip();
-            manager.CardSelected(this);
+            GameManager.instance.CardSelected(this);
         }
     }
 
     public void Flip()
     {
         isFlipped = true;
-        transform.rotation = Quaternion.Euler(0, 0, 180);
+        transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
     public void ResetCard()
     {
         isFlipped = false;
-        transform.rotation = Quaternion.Euler(0, 0, 0);
+        transform.rotation = Quaternion.Euler(0, 0, 180);
     }
 
     public void ChangeCardNumber(int num)
