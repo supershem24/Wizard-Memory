@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -7,16 +8,11 @@ public class GameManager : MonoBehaviour
     private Card firstCard;
     private Card secondCard;
 
+    private List<Card> matchedCards = new List<Card>();
+
     public static GameManager instance;
     public static bool playerTurn;
 
-    // SHION: Three things
-    // A. Make flipping cards have a delay as to not keep cards flipped through spam
-    // B. Make the deck have cards that match to actually test matching cards
-    // C. Make matching cards leave the game board, and put new cards from the deck in those places.
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         playerTurn = true;
@@ -49,8 +45,8 @@ public class GameManager : MonoBehaviour
 
         if (firstCard.testNum == secondCard.testNum)
         {
-            Debug.Log("Match!");
-            Invoke(nameof(HandleMatch), 2f);
+            Debug.Log("Match! Keep going");
+            Invoke(nameof(HandleMatch), 0.3f);
         }
         else
         {
@@ -61,26 +57,37 @@ public class GameManager : MonoBehaviour
 
     void HandleMatch()
     {
-        table.ReplaceCard(firstCard);
-        table.ReplaceCard(secondCard);
+        if (!matchedCards.Contains(firstCard))
+        {
+            matchedCards.Add(firstCard);
+        }
+        matchedCards.Add(secondCard);
 
-        ResetSelection();
-        EnablePlayerTurn();
+        firstCard = secondCard;
+        secondCard = null;
+        playerTurn = true;
     }
 
     void ResetCards()
     {
-        firstCard.ResetCard();
         secondCard.ResetCard();
-        ResetSelection();
-
-        EnablePlayerTurn();
-    }
-
-    void ResetSelection()
-    {
-        firstCard = null;
         secondCard = null;
+
+        if (matchedCards.Count == 0)
+        {
+            firstCard.ResetCard();
+        }
+        else
+        {
+            foreach (Card matched in matchedCards)
+            {
+                table.ReplaceCard(matched);
+            }
+        }
+
+        matchedCards.Clear();
+        firstCard = null;
+        EnablePlayerTurn();
     }
 
     void EnablePlayerTurn()

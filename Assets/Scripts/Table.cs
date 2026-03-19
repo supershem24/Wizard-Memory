@@ -20,7 +20,7 @@ public class Table : MonoBehaviour
     void Start()
     {
         TABLECENTER = gameObject.transform.position;
-        currentDeck.CreateSampleDeck(10);
+        currentDeck.CreateSampleDeck();
         currentDeck.ShuffleDeck();
         SetUpLayout();
     }

@@ -10,6 +10,16 @@ public class Deck : MonoBehaviour
     public List<int> deckCards;
     public GameObject cardPrefab;
 
+    // Added Colors for testing. an be deleted later with public void SetCardColor(Color color) in card.cs
+    public static readonly Color[] VALUE_COLORS = new Color[]
+    {
+        Color.red,
+        Color.blue,
+        Color.green,
+        Color.yellow,
+        Color.black
+    };
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -45,14 +55,6 @@ public class Deck : MonoBehaviour
             return null;
         }
 
-        //TESTING STUFF BEGIN
-        //GameObject card = Instantiate<GameObject>(cardPrefab);
-        //card.GetComponent<Card>().ChangeCardNumber(deckCards[deckCards.Count - 1]);
-        //TESTING STUFF END
-
-        //deckCards.RemoveAt(deckCards.Count - 1);
-        //return card.GetComponent<Card>();
-
         // Create the Card
         GameObject card = Instantiate(cardPrefab);
         Card c = card.GetComponent<Card>();
@@ -61,6 +63,7 @@ public class Deck : MonoBehaviour
         // Assign number
         int value = deckCards[deckCards.Count - 1];
         c.ChangeCardNumber(value);
+        c.SetCardColor(VALUE_COLORS[value - 1]);
 
         // Remove the card from the deck
         deckCards.RemoveAt(deckCards.Count - 1);
@@ -70,14 +73,16 @@ public class Deck : MonoBehaviour
     }
 
     //Sameple deck of numbers
-    public void CreateSampleDeck(int num)
+    public void CreateSampleDeck()
     {
         deckCards.Clear();
 
-        for (int i = 0; i < num; i++)
+        for (int i = 0; i < 5; i++)
         {
-            deckCards.Add(i + 1);
-            deckCards.Add(i + 1);
+            for (int j = 0; j < 9; j++)
+            {
+                deckCards.Add(i + 1);
+            }
         }
 
     }

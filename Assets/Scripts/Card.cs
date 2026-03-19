@@ -62,4 +62,20 @@ public class Card : MonoBehaviour
         gridX = x;
         gridY = y;
     }
+
+    // Code added for testing purpose, can be deleted later with the public static readonly Color[] VALUE_COLORS = new Color[] in deck.cs
+    public void SetCardColor(Color color)
+    {
+        MeshRenderer mr = GetComponentInChildren<MeshRenderer>();
+        if (mr != null)
+        {
+            Material mat = new Material(mr.material);
+            mat.SetColor("_BaseColor", color);
+            mr.material = mat;
+        }
+        else
+        {
+            Debug.LogError("No MeshRenderer found in children!");
+        }
+    }
 }

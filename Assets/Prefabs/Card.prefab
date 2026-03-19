@@ -517,4 +517,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Card
   testNum: 0
-  manager: {fileID: 0}
+  gridX: 0
+  gridY: 0
