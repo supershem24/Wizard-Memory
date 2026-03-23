@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
+using System.Collections.Generic;
 
 public class Card : MonoBehaviour
 {
@@ -55,6 +56,13 @@ public class Card : MonoBehaviour
     {
         testNum = num;
         gameObject.GetComponentInChildren<TMP_Text>().text = num.ToString();
+    }
+
+    //Create the card using a json list to find out the rarity and color of an ingredient
+    public void CreateCard(string ingredient)
+    {
+        this.ingredient = ingredient;
+        
     }
 
     public void SetGridPosition(int x, int y)
