@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 using System.Collections.Generic;
+using UnityEngine.UIElements;
 
 public class Card : MonoBehaviour
 {
@@ -62,7 +63,16 @@ public class Card : MonoBehaviour
     public void CreateCard(string ingredient)
     {
         this.ingredient = ingredient;
-        Dictionary<string, [string, string] > dici = new Dictionary<string, [string, string]>();
+        switch (ingredient)
+        {
+            case "Berry":
+                color = "Blue";
+                rarity = "Common";
+                break;
+            default:
+                break;
+        }
+        GetComponent<MeshRenderer>().material = Resources.Load<Material>("2DMaterials/" + ingredient + "M");
     }
 
     public void SetGridPosition(int x, int y)

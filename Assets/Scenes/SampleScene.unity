@@ -775,9 +775,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 445532986227105635, guid: 1ba138c7213329a4c9ed8952a0a9d07a, type: 3}
+      propertyPath: m_Name
+      value: Number Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 445532986227105635, guid: 1ba138c7213329a4c9ed8952a0a9d07a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1887078702231017719, guid: 1ba138c7213329a4c9ed8952a0a9d07a, type: 3}
       propertyPath: m_Name
       value: Card
+      objectReference: {fileID: 0}
+    - target: {fileID: 3216842423549627148, guid: 1ba138c7213329a4c9ed8952a0a9d07a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4332833955826929502, guid: 1ba138c7213329a4c9ed8952a0a9d07a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -819,10 +831,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6755012183962580391, guid: 1ba138c7213329a4c9ed8952a0a9d07a, type: 3}
-      propertyPath: m_Name
-      value: Front
+    - target: {fileID: 7092345529995786902, guid: 1ba138c7213329a4c9ed8952a0a9d07a, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7092345529995786902, guid: 1ba138c7213329a4c9ed8952a0a9d07a, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8cba476e5de12a746a5f1479b4e07be8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
