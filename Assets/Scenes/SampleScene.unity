@@ -779,10 +779,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Card
       objectReference: {fileID: 0}
-    - target: {fileID: 1887078702231017719, guid: 1ba138c7213329a4c9ed8952a0a9d07a, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4332833955826929502, guid: 1ba138c7213329a4c9ed8952a0a9d07a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.88
@@ -822,6 +818,10 @@ PrefabInstance:
     - target: {fileID: 4332833955826929502, guid: 1ba138c7213329a4c9ed8952a0a9d07a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6755012183962580391, guid: 1ba138c7213329a4c9ed8952a0a9d07a, type: 3}
+      propertyPath: m_Name
+      value: Front
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

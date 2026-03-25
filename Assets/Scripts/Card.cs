@@ -62,7 +62,7 @@ public class Card : MonoBehaviour
     public void CreateCard(string ingredient)
     {
         this.ingredient = ingredient;
-        
+        Dictionary<string, [string, string] > dici = new Dictionary<string, [string, string]>();
     }
 
     public void SetGridPosition(int x, int y)
