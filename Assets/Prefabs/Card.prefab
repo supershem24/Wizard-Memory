@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 4722061560136015790}
   - component: {fileID: 4099127664731610864}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Number Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3216842423549627148
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27,7 +27,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445532986227105635}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -426,6 +426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 705280241ef580b4391ae8a051d188af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Card
+  faceMesh: {fileID: 2003478888027008111}
   testNum: 0
   gridX: 0
   gridY: 0
@@ -440,7 +441,6 @@ GameObject:
   - component: {fileID: 544423705835025306}
   - component: {fileID: 8138188885668061016}
   - component: {fileID: 2003478888027008111}
-  - component: {fileID: 9106321873587112948}
   m_Layer: 0
   m_Name: Front
   m_TagString: Untagged
@@ -496,7 +496,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d3363c701b479fc47adb7b1749a1da83, type: 2}
+  - {fileID: 2100000, guid: f5555d7ebb9c9b44688e9aad56f1735a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -520,25 +520,3 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &9106321873587112948
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6755012183962580391}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}

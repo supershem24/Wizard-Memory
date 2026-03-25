@@ -49,7 +49,7 @@ public class Table : MonoBehaviour
                     return;
                 }
 
-                Vector3 pos = new Vector3(TABLECENTER.x + GRIDGAP * (1.5f - i), TABLECENTER.y + CARDPLACEMENTHEIGHT, TABLECENTER.z + GRIDGAP * (1.5f - j) + 0.7f);
+                Vector3 pos = new Vector3(TABLECENTER.x + GRIDGAP * (1.5f - i), TABLECENTER.y + CARDPLACEMENTHEIGHT, TABLECENTER.z + GRIDGAP * (1.5f - j));
                 currentCard.transform.position = pos;
 
                 currentCard.ResetCard();

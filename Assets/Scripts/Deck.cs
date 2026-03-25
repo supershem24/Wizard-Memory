@@ -7,7 +7,7 @@ public class Deck : MonoBehaviour
 {
 
     [SerializeField]
-    public List<int> deckCards;
+    public List<string> deckCards; //ingiedient of which card is
     public GameObject cardPrefab;
 
     // Added Colors for testing. an be deleted later with public void SetCardColor(Color color) in card.cs
@@ -35,7 +35,7 @@ public class Deck : MonoBehaviour
     //Shuffle the deck
     public void ShuffleDeck()
     {
-        int temp;
+        string temp;
         for (int i = 0;  i < deckCards.Count; i++)
         {
             int rand = Random.Range(0, deckCards.Count - 1);
@@ -61,9 +61,14 @@ public class Deck : MonoBehaviour
         c.ResetCard();
 
         // Assign number
-        int value = deckCards[deckCards.Count - 1];
+        /*int value = deckCards[deckCards.Count - 1];
         c.ChangeCardNumber(value);
-        c.SetCardColor(VALUE_COLORS[value - 1]);
+        c.SetCardColor(VALUE_COLORS[value - 1]);*/
+
+        //Assign card to ingredient
+        string ingredient = deckCards[deckCards.Count - 1];
+        c.CreateCard(ingredient);
+        c.testNum = Random.Range(0, 2);
 
         // Remove the card from the deck
         deckCards.RemoveAt(deckCards.Count - 1);
@@ -73,6 +78,21 @@ public class Deck : MonoBehaviour
     }
 
     //Sameple deck of numbers
+    /*public void CreateSampleDeck()
+    {
+        deckCards.Clear();
+
+        for (int i = 0; i < 5; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+                deckCards.Add(i+1);
+            }
+        }
+
+    }*/
+
+    //Sample deck of strings
     public void CreateSampleDeck()
     {
         deckCards.Clear();
@@ -81,7 +101,7 @@ public class Deck : MonoBehaviour
         {
             for (int j = 0; j < 9; j++)
             {
-                deckCards.Add(i + 1);
+                deckCards.Add("Berry");
             }
         }
 
