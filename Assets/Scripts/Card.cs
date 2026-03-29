@@ -3,6 +3,7 @@ using UnityEngine;
 //using static UnityEngine.GraphicsBuffer;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
+using System;
 
 public class Card : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class Card : MonoBehaviour
     MeshRenderer faceMesh;
 
     string color;
+    public string getColor() { return color; }
+
     string ingredient;
     string rarity;
     public int testNum;
@@ -67,15 +70,9 @@ public class Card : MonoBehaviour
     public void CreateCard(string ingredient)
     {
         this.ingredient = ingredient;
-        switch (ingredient)
-        {
-            case "Berry":
-                color = "Blue";
-                rarity = "Common";
-                break;
-            default:
-                break;
-        }
+        Tuple<string,string> tempAttributes = GameManager.getIngridentAttributes(ingredient);
+        color = tempAttributes.Item1;
+        rarity = tempAttributes.Item2;
         faceMesh.material = Resources.Load<Material>("2DMaterials/" + ingredient + "M");
     }
 
@@ -83,21 +80,5 @@ public class Card : MonoBehaviour
     {
         gridX = x;
         gridY = y;
-    }
-
-    // Code added for testing purpose, can be deleted later with the public static readonly Color[] VALUE_COLORS = new Color[] in deck.cs
-    public void SetCardColor(Color color)
-    {
-        MeshRenderer mr = GetComponentInChildren<MeshRenderer>();
-        if (mr != null)
-        {
-            Material mat = new Material(mr.material);
-            mat.SetColor("_BaseColor", color);
-            mr.material = mat;
-        }
-        else
-        {
-            Debug.LogError("No MeshRenderer found in children!");
-        }
     }
 }

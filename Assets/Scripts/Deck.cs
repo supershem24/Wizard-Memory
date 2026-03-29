@@ -10,15 +10,6 @@ public class Deck : MonoBehaviour
     public List<string> deckCards; //ingiedient of which card is
     public GameObject cardPrefab;
 
-    // Added Colors for testing. an be deleted later with public void SetCardColor(Color color) in card.cs
-    public static readonly Color[] VALUE_COLORS = new Color[]
-    {
-        Color.red,
-        Color.blue,
-        Color.green,
-        Color.yellow,
-        Color.black
-    };
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -92,16 +83,43 @@ public class Deck : MonoBehaviour
 
     }*/
 
-    //Sample deck of strings
+    //Sample deck of ingredients, with amounts based on rarity and color (colorless cards are more common)
     public void CreateSampleDeck()
     {
         deckCards.Clear();
 
-        for (int i = 0; i < 5; i++)
+        int tempAmount = 0;
+        // create a deck, with an amount of every ingredient based on...
+        foreach (string ingredient in GameManager.getAllIngredients())
         {
-            for (int j = 0; j < 9; j++)
+            tempAmount = 0;
+            //rarity ...
+            switch (GameManager.getIngridentAttributes(ingredient).Item2)
             {
-                deckCards.Add("Berry");
+                case "Common":
+                    tempAmount = 3;
+                    break;
+                case "Rare":
+                    tempAmount = 2;
+                    break;
+                case "Perfect":
+                    tempAmount = 1;
+                    break;
+                default:
+                    break;
+            }
+            //color (if theyre colorless) ...
+            if (GameManager.getIngridentAttributes(ingredient).Item1 == "Colorless")
+            {
+                tempAmount *= 2;
+                if (GameManager.getIngridentAttributes(ingredient).Item2 == "Common")
+                    tempAmount = 9;
+            }
+
+            //then add those ingredients to the deck
+            for (int i = 0; i < tempAmount; i++)
+            {
+                deckCards.Add(ingredient);
             }
         }
 
