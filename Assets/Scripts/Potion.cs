@@ -70,6 +70,10 @@ public class Potion : MonoBehaviour
     /// - Potion Effects: Affect the potions that players have brewed or will brew
     /// - 
     /// - Ongoing Effects: Effects that last for a certain number of turns or until a certain condition is met
+    /// 
+    /// 
+    /// == Ideas ==
+    /// - Potion dict of strings to Delegate functions
     /// </summary>
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -82,5 +86,46 @@ public class Potion : MonoBehaviour
     void Update()
     {
         
+    }
+
+    /// <summary>
+    /// Potion list and funtions.
+    /// </summary>
+
+    // Choose a player. Remove an ingredient from their inventory and add it to your own.
+    void ThievesMark()
+    {
+        //Choose player function
+        //Remove ingredient from their inventory
+        //Add ingredient to your inventory
+    }
+
+    // Freeze a 2x2 square of ingredients on the grid, preventing anything from affecting or interacting with them until your next turn
+    void GiantSnowball()
+    {
+        //Choose 2x2 square AREA function
+        //Freeze those ingredients until your next turn
+    }
+
+    // Flip over and shuffle the discard pile and draw one from the top. If you draw a perfect ingredient, put it at the bottom and draw again
+    void Scavenging()
+    {
+        //Take a random discard pile ingridient
+        // if perfect, draw again
+        //Add ingredient to inventory
+    }
+
+    // Compete in a single round of rock-paper-scissors with each player. For each round, the winner earns 3 points. Ties yield no points. (Maybe Coin flips)
+    void TrialOfSkill()
+    {
+        //for each player, do some type of random generator to determine win/loss/tie or RPS
+        //Award 3 points to winner of each round
+    }
+
+    // Cause one player to lose 5 points
+    void InstantIcicle()
+    {
+        //Choose player function
+        //Remove 5 points from that player
     }
 }
