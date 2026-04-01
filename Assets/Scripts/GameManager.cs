@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public Table table;
+    [SerializeField]
+    public Board board;
+    public GameObject playerPrefab;
+    public Deck deck;
 
     private Card firstCard;
     private Card secondCard;
@@ -15,6 +18,8 @@ public class GameManager : MonoBehaviour
 
     public static GameManager instance;
     public static bool playerTurn;
+    public static Player currentPlayerTurn;
+    List<Player> players = new List<Player>();
 
     /// <summary>
     /// INGREDIENT DICTIONARY
@@ -93,15 +98,37 @@ public class GameManager : MonoBehaviour
     /// END INGREDIENT DICTIONARY
     /// </summary>
 
-    void Start()
+    void Awake()
     {
         playerTurn = true;
         instance = this;
+        StartGame();
     }
 
     // Update is called once per frame
     void Update()
     {
+
+    }
+
+    // Starts the game, can be used to reset the game as well
+    void StartGame()
+    {
+        board = GameObject.FindGameObjectWithTag("Board").GetComponent<Board>();
+        deck = GameObject.FindGameObjectWithTag("Deck").GetComponent<Deck>();
+
+        int amountOfPlayers = 2; //TEMPORARY, CHANGE LATER
+        for (int i = 0; i < amountOfPlayers; i++)
+        {
+            GameObject playerObj = Instantiate(playerPrefab);
+            players.Add(playerObj.GetComponent<Player>());
+        }
+        playerTurn = players[0];
+
+        deck.CreateSampleDeck();
+        deck.ShuffleDeck();
+        board.SetUpLayout();
+
 
     }
 
@@ -172,7 +199,7 @@ public class GameManager : MonoBehaviour
         {
             foreach (Card matched in matchedCards)
             {
-                table.ReplaceCard(matched);
+                board.ReplaceCard(matched);
             }
         }
 

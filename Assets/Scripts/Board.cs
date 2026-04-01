@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class Table : MonoBehaviour
+public class Board : MonoBehaviour
 {
     const int LAYOUTWIDTH = 4;
     const int LAYOUTHEIGHT = 4;
-    const float CARDPLACEMENTHEIGHT = 0.5f;
+    const float CARDPLACEMENTHEIGHT = 1.5f;
 
     [SerializeField]
-    Vector3 TABLECENTER;
+    Vector3 BOARDCENTER;
     float GRIDGAP = 1.4f; //Gap between centers of cards
     const float CARDWIDTH = 1;
     const float CARDHEIGHT = 1;
@@ -16,13 +16,10 @@ public class Table : MonoBehaviour
     public Deck currentDeck;
     Card[][] field; //PLACEHOLDER FOR PHYSICAL PLACE
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    // Awake is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
     {
-        TABLECENTER = gameObject.transform.position;
-        currentDeck.CreateSampleDeck();
-        currentDeck.ShuffleDeck();
-        SetUpLayout();
+        BOARDCENTER = gameObject.transform.position;
     }
 
     // Update is called once per frame
@@ -32,7 +29,7 @@ public class Table : MonoBehaviour
     }
 
     //Setting up on layout based on grid pattern
-    void SetUpLayout()
+    public void SetUpLayout()
     {
         field = new Card[LAYOUTWIDTH][];
 
@@ -49,7 +46,7 @@ public class Table : MonoBehaviour
                     return;
                 }
 
-                Vector3 pos = new Vector3(TABLECENTER.x + GRIDGAP * (1.5f - i), TABLECENTER.y + CARDPLACEMENTHEIGHT, TABLECENTER.z + GRIDGAP * (1.5f - j));
+                Vector3 pos = new Vector3(BOARDCENTER.x + GRIDGAP * (1.5f - i), BOARDCENTER.y + CARDPLACEMENTHEIGHT, BOARDCENTER.z + GRIDGAP * (1.5f - j));
                 currentCard.transform.position = pos;
 
                 currentCard.ResetCard();
@@ -68,7 +65,7 @@ public class Table : MonoBehaviour
         Vector3 pos = oldCard.transform.position;
 
         // Add to inventory
-        Inventory.instance.AddItem(oldCard.GetIngredient());
+        Inventory.instance.AddItem(oldCard);
         // Remove old card
         Destroy(oldCard.gameObject);
 

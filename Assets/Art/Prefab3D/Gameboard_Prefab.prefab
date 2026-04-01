@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 423037217618279173}
   m_Layer: 0
   m_Name: Gameboard_Prefab
-  m_TagString: Untagged
+  m_TagString: Board
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a4da7aa5c7dbef43935658a32020cc9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Table
-  TABLECENTER: {x: 0, y: 0, z: 0}
+  BOARDCENTER: {x: 0, y: 0, z: 0}
   currentDeck: {fileID: 0}
 --- !u!65 &423037217618279173
 BoxCollider:
@@ -67,8 +67,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.9705378, y: 0.034599807, z: 0.9700263}
-  m_Center: {x: 0, y: 0.016810214, z: 0}
+  m_Size: {x: 0.9705378, y: 0.033400632, z: 0.9700263}
+  m_Center: {x: 0, y: -0.011257601, z: 0}
 --- !u!1001 &4206915543284480451
 PrefabInstance:
   m_ObjectHideFlags: 0

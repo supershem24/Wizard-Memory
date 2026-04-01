@@ -18,6 +18,8 @@ public class Card : MonoBehaviour
     string rarity;
     public int testNum;
 
+    //MAKE AN ISWILD VARIABLE
+
     public int gridX;
     public int gridY;
 
@@ -81,13 +83,14 @@ public class Card : MonoBehaviour
         gameObject.GetComponentInChildren<TMP_Text>().text = num.ToString();
     }*/
 
-    //Create the card using a json list to find out the rarity and color of an ingredient
+    //Create the card using the GameManager IngrideientDict to find out the rarity and color of an ingredient
     public void CreateCard(string ingredient)
     {
         this.ingredient = ingredient;
         Tuple<string,string> tempAttributes = GameManager.getIngridentAttributes(ingredient);
         color = tempAttributes.Item1;
         rarity = tempAttributes.Item2;
+        //make the top of the card the correct face based on the ingredient
         faceMesh.material = Resources.Load<Material>("2DMaterials/" + ingredient + "M");
     }
 
