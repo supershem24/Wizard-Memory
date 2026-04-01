@@ -96,4 +96,9 @@ public class Card : MonoBehaviour
         gridX = x;
         gridY = y;
     }
+
+    public string GetIngredient()
+    {
+        return ingredient;
+    }
 }

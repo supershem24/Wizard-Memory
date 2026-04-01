@@ -67,6 +67,8 @@ public class Table : MonoBehaviour
 
         Vector3 pos = oldCard.transform.position;
 
+        // Add to inventory
+        Inventory.instance.AddItem(oldCard.GetIngredient());
         // Remove old card
         Destroy(oldCard.gameObject);
 
