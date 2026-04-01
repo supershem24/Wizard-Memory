@@ -24,10 +24,12 @@ public class Player : MonoBehaviour
                 GameObject selectedObject = hit.collider.gameObject;
                 //Debug.Log("Selected Object: " + selectedObject.name);
 
+                //past here it has to be the player's turn to interact with things
                 if (!GameManager.playerTurn)
                     return;
 
-                if(selectedObject.GetComponent<Card>() != null)
+                //for interacting with unflipped cards
+                if(selectedObject.GetComponent<Card>() != null && !selectedObject.GetComponent<Card>().IsFlipped)
                 {
                     Card selectedCard = selectedObject.GetComponent<Card>();
                     selectedCard.Flip();
@@ -37,9 +39,5 @@ public class Player : MonoBehaviour
         }
     }
 
-    
-    void SelectCard()
-    {
-        
-    }
+
 }

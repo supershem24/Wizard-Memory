@@ -23,17 +23,27 @@ public class Card : MonoBehaviour
 
     private bool isFlipped = false;
 
+    public bool IsFlipped { get { return isFlipped; } }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Rigidbody rigidbody;
+    private Vector3 tempPos; // Temporary variable to store position during physics interactions
+
+
+    // Awake is called once before the first execution of Update before the MonoBehaviour is created
+    void Awake()
+    {
+        rigidbody = GetComponent<Rigidbody>();
+    }
+
     void Start()
     {
-
+        tempPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     /*void OnMouseDown()
@@ -48,8 +58,12 @@ public class Card : MonoBehaviour
     //Flip the Card faceup
     public void Flip()
     {
-        isFlipped = true;
-        transform.rotation = Quaternion.Euler(0, 0, 0);
+        isFlipped = !isFlipped;
+        //transform.position = tempPos;
+        //rigidbody.AddForce(new Vector3(0, 100, 0));
+        //rigidbody.AddTorque(new Vector3(-50, 0, 0)); ANIMATION ATTEMPT, NOT WORKING
+        if (isFlipped) { transform.rotation = Quaternion.Euler(0, 0, 0); }
+        else { transform.rotation = Quaternion.Euler(0, 0, 180); }
     }
 
     //Flip the Card facedown
@@ -57,6 +71,7 @@ public class Card : MonoBehaviour
     {
         isFlipped = false;
         transform.rotation = Quaternion.Euler(0, 0, 180);
+        tempPos = transform.position;
     }
 
     //Testing for changing the card number, probably have to do this with the other attruibutes of the card

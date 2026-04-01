@@ -161,12 +161,12 @@ public class GameManager : MonoBehaviour
 
     void ResetCards()
     {
-        secondCard.ResetCard();
+        secondCard.Flip();
         secondCard = null;
 
         if (matchedCards.Count == 0)
         {
-            firstCard.ResetCard();
+            firstCard.Flip();
         }
         else
         {
