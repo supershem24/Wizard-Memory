@@ -36,14 +36,14 @@ public class Card : MonoBehaviour
 
     }
 
-    void OnMouseDown()
+    /*void OnMouseDown()
     {
         if (GameManager.playerTurn && !isFlipped)
         {
             Flip();
             GameManager.instance.CardSelected(this);
         }
-    }
+    }*/
 
     //Flip the Card faceup
     public void Flip()
