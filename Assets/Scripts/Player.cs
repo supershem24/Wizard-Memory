@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
                 //Debug.Log("Selected Object: " + selectedObject.name);
 
                 //past here it has to be the player's turn to interact with things
-                if (!GameManager.playerTurn)
+                if (!(GameManager.currentPlayerTurn == this))
                     return;
 
                 //for interacting with unflipped cards

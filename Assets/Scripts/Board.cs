@@ -4,7 +4,7 @@ public class Board : MonoBehaviour
 {
     const int LAYOUTWIDTH = 4;
     const int LAYOUTHEIGHT = 4;
-    const float CARDPLACEMENTHEIGHT = 1.5f;
+    const float CARDPLACEMENTHEIGHT = 0.5f;
 
     [SerializeField]
     Vector3 BOARDCENTER;
@@ -65,9 +65,7 @@ public class Board : MonoBehaviour
         Vector3 pos = oldCard.transform.position;
 
         // Add to inventory
-        Inventory.instance.AddItem(oldCard);
-        // Remove old card
-        Destroy(oldCard.gameObject);
+        GameManager.currentPlayerTurn.GetComponent<Inventory>().AddItem(oldCard);
 
         // If deck is empty, just leave it empty
         if (currentDeck.deckCards.Count == 0)

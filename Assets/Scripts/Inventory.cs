@@ -3,13 +3,11 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    public static Inventory instance;
-
     public List<Card> items = new List<Card>();
 
     void Awake()
     {
-        instance = this;
+        
     }
 
     public void AddItem(Card ingredient)
@@ -18,6 +16,8 @@ public class Inventory : MonoBehaviour
         items.Add(ingredient);
         Debug.Log("Added to inventory: " + ingredient);
     }
+
+    
 
 
     void Start()

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -123,7 +124,7 @@ public class GameManager : MonoBehaviour
             GameObject playerObj = Instantiate(playerPrefab);
             players.Add(playerObj.GetComponent<Player>());
         }
-        playerTurn = players[0];
+        currentPlayerTurn = players[0];
 
         deck.CreateSampleDeck();
         deck.ShuffleDeck();
@@ -205,11 +206,14 @@ public class GameManager : MonoBehaviour
 
         matchedCards.Clear();
         firstCard = null;
-        EnablePlayerTurn();
+        SwitchPlayerTurn();
     }
 
-    void EnablePlayerTurn()
+    void SwitchPlayerTurn()
     {
+        players.RemoveAt(0);
+        players.Append(currentPlayerTurn);
+        currentPlayerTurn = players[0];
         playerTurn = true;
     }
 
