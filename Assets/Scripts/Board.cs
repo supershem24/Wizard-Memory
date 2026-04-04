@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Board : MonoBehaviour
 {
-    const int LAYOUTWIDTH = 4;
-    const int LAYOUTHEIGHT = 4;
+    public const int LAYOUTWIDTH = 4;
+    public const int LAYOUTHEIGHT = 4;
     const float CARDPLACEMENTHEIGHT = 0.5f;
 
     [SerializeField]
@@ -80,5 +80,11 @@ public class Board : MonoBehaviour
         newCard.SetGridPosition(x, y);
 
         field[x][y] = newCard;
+    }
+
+    //Grabs the card on the board at the given coordinates, returns null if there is no card
+    public Card GetCardOnBoard(int x, int y)
+    {
+        return field[x][y];
     }
 }

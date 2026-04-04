@@ -42,7 +42,7 @@ public class Deck : MonoBehaviour
     {
         if (deckCards.Count <= 0)
         {
-            Debug.LogError("NO MORE CARDS IN DECK");
+            Debug.Log("NO MORE CARDS IN DECK");
             return null;
         }
 

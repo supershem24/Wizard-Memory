@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public abstract class Player : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -11,32 +11,14 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            // Create a ray from the mouse position into the world
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
+        SelectCardsUpdate();
+    }
 
-            // Perform the raycast and check if it hits anything
-            if (Physics.Raycast(ray, out hit))
-            {
-                // A hit was detected, you can now access the hit object
-                GameObject selectedObject = hit.collider.gameObject;
-                //Debug.Log("Selected Object: " + selectedObject.name);
-
-                //past here it has to be the player's turn to interact with things
-                if (!(GameManager.currentPlayerTurn == this))
-                    return;
-
-                //for interacting with unflipped cards
-                if(selectedObject.GetComponent<Card>() != null && !selectedObject.GetComponent<Card>().IsFlipped)
-                {
-                    Card selectedCard = selectedObject.GetComponent<Card>();
-                    selectedCard.Flip();
-                    GameManager.instance.CardSelected(selectedCard);
-                }
-            }
-        }
+    internal virtual void SelectCardsUpdate()
+    {
+        //past here it has to be the current player's turn to interact with things
+        if (!(GameManager.currentPlayerTurn == this) || !GameManager.playerTurn)
+            return;
     }
 
 

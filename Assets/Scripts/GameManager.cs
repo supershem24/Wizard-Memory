@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -101,7 +102,6 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        playerTurn = true;
         instance = this;
         StartGame();
     }
@@ -118,19 +118,30 @@ public class GameManager : MonoBehaviour
         board = GameObject.FindGameObjectWithTag("Board").GetComponent<Board>();
         deck = GameObject.FindGameObjectWithTag("Deck").GetComponent<Deck>();
 
-        int amountOfPlayers = 2; //TEMPORARY, CHANGE LATER
+        //TEMPORARY, CHANGE LATER
+        int amountOfPlayers = 2; 
+        Type[] playerTypes = { typeof(Human), typeof(RandyAI)};
+
         for (int i = 0; i < amountOfPlayers; i++)
         {
             GameObject playerObj = Instantiate(playerPrefab);
+            playerObj.name = "Player " + (i+1);
+            playerObj.AddComponent(playerTypes[i]);
             players.Add(playerObj.GetComponent<Player>());
         }
         currentPlayerTurn = players[0];
+        Debug.Log(currentPlayerTurn + "'s Turn!");
+        playerTurn = true;
 
         deck.CreateSampleDeck();
         deck.ShuffleDeck();
         board.SetUpLayout();
 
+    }
 
+    public Card GetCardOnBoard(int x, int y)
+    {
+        return board.GetCardOnBoard(x, y);
     }
 
     public void CardSelected(Card card)
@@ -184,6 +195,7 @@ public class GameManager : MonoBehaviour
 
         firstCard = secondCard;
         secondCard = null;
+
         playerTurn = true;
     }
 
@@ -212,8 +224,9 @@ public class GameManager : MonoBehaviour
     void SwitchPlayerTurn()
     {
         players.RemoveAt(0);
-        players.Append(currentPlayerTurn);
+        players.Add(currentPlayerTurn);
         currentPlayerTurn = players[0];
+        Debug.Log(currentPlayerTurn + "'s Turn!");
         playerTurn = true;
     }
 
