@@ -890,9 +890,10 @@ GameObject:
   - component: {fileID: 1627738675}
   - component: {fileID: 1627738677}
   - component: {fileID: 1627738676}
+  - component: {fileID: 1627738678}
   m_Layer: 5
   m_Name: Panel
-  m_TagString: Untagged
+  m_TagString: Scoreboard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -955,6 +956,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1627738674}
   m_CullTransparentMesh: 1
+--- !u!114 &1627738678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627738674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd96ed25efee7664a98ccaa3b2aa2849, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Scoreboard
 --- !u!1 &2053650521
 GameObject:
   m_ObjectHideFlags: 0
@@ -987,6 +1000,7 @@ MonoBehaviour:
   board: {fileID: 0}
   playerPrefab: {fileID: 7111882385132605468, guid: 43960186b03686d40b29786da42d78b2, type: 3}
   deck: {fileID: 0}
+  scoreboard: {fileID: 0}
 --- !u!4 &2053650523
 Transform:
   m_ObjectHideFlags: 0

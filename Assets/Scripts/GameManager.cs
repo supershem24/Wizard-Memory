@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public Board board;
     public GameObject playerPrefab;
     public Deck deck;
+    public Scoreboard scoreboard;
 
     private Card firstCard;
     private Card secondCard;
@@ -117,17 +118,22 @@ public class GameManager : MonoBehaviour
     {
         board = GameObject.FindGameObjectWithTag("Board").GetComponent<Board>();
         deck = GameObject.FindGameObjectWithTag("Deck").GetComponent<Deck>();
+        scoreboard = GameObject.FindGameObjectWithTag("Scoreboard").GetComponent<Scoreboard>();
 
         //TEMPORARY, CHANGE LATER
         int amountOfPlayers = 2; 
         Type[] playerTypes = { typeof(Human), typeof(RandyAI)};
-
+        
+        //For each player, do these
         for (int i = 0; i < amountOfPlayers; i++)
         {
             GameObject playerObj = Instantiate(playerPrefab);
             playerObj.name = "Player " + (i+1);
             playerObj.AddComponent(playerTypes[i]);
             players.Add(playerObj.GetComponent<Player>());
+            //somewhat temp? difficutl to say, it works
+            scoreboard.players.Add(playerObj.GetComponent<Player>());
+            scoreboard.scores.Add(0);
         }
         currentPlayerTurn = players[0];
         Debug.Log(currentPlayerTurn + "'s Turn!");
@@ -136,6 +142,7 @@ public class GameManager : MonoBehaviour
         deck.CreateSampleDeck();
         deck.ShuffleDeck();
         board.SetUpLayout();
+        scoreboard.DisplayScore();
 
     }
 
@@ -210,6 +217,10 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            //TESTINGGGGG TO ADD POINTS
+            currentPlayerTurn.AddScore(((int)Math.Pow((matchedCards.Count - 1), 2.0)));
+            scoreboard.UpdateScore(currentPlayerTurn, currentPlayerTurn.getScore());
+            //TESTING AREA ENDED
             foreach (Card matched in matchedCards)
             {
                 board.ReplaceCard(matched);

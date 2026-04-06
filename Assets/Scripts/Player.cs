@@ -18,7 +18,7 @@ public abstract class Player : MonoBehaviour
     }
 
     //Allows the player's score to be changed by a certain amount, can be positive or negative (returns the new score after the change)
-    public int ChangeScore(int scoreChange)
+    public int AddScore(int scoreChange)
     {
         score += scoreChange;
         return score;
