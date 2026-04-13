@@ -5,6 +5,7 @@ public class Board : MonoBehaviour
     public const int LAYOUTWIDTH = 4;
     public const int LAYOUTHEIGHT = 4;
     const float CARDPLACEMENTHEIGHT = 0.5f;
+    static public float BOARDSCALE;
 
     [SerializeField]
     Vector3 BOARDCENTER;
@@ -20,6 +21,8 @@ public class Board : MonoBehaviour
     void Awake()
     {
         BOARDCENTER = gameObject.transform.position;
+        BOARDSCALE = gameObject.transform.localScale.x/10;
+        GRIDGAP *= gameObject.transform.localScale.x / 10;
     }
 
     // Update is called once per frame

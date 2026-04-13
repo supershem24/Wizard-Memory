@@ -1,16 +1,24 @@
 using UnityEngine;
 
-public class ThievesMark : MonoBehaviour
+/// <summary>
+/// Potion Effect:
+/// Steal an ingredient from an opponent.
+/// </summary>
+public class ThievesMark : Potion
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    internal override void SetAttributes()
     {
-        
+        points = 2;
+        rarity = PotionRarity.Common;
     }
 
-    // Update is called once per frame
-    void Update()
+    //Steal an ingredient from an opponent.
+    internal override void PotionEffect()
     {
-        
+        Player player = GameManager.instance.ChoosePlayer();
+        Card ingredient = player.ChooseIngredient();
+        player.RemoveIngredient(ingredient);
+        GameManager.currentPlayerTurn.AddIngredient(ingredient);
     }
 }

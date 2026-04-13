@@ -241,5 +241,16 @@ public class GameManager : MonoBehaviour
         playerTurn = true;
     }
 
+    /// <summary>
+    /// POTION HELPERS
+    /// </summary>
+
+    //Choose a player from the current players perspective (PLACEHOLDER)
+    public Player ChoosePlayer()
+    {
+        int rand = UnityEngine.Random.Range(1, players.Count);
+        return players[rand];
+    }
+
 
 }
