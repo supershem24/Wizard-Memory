@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public static Player currentPlayerTurn;
     List<Player> players = new List<Player>();
 
+    public Transform inventoryDisplayAnchor;
+
     /// <summary>
     /// INGREDIENT DICTIONARY
     /// </summary>
@@ -131,6 +133,14 @@ public class GameManager : MonoBehaviour
             playerObj.name = "Player " + (i+1);
             playerObj.AddComponent(playerTypes[i]);
             players.Add(playerObj.GetComponent<Player>());
+
+            Inventory inv = playerObj.GetComponent<Inventory>();
+            if (inv == null)
+            {
+                inv = playerObj.AddComponent<Inventory>();
+            }
+            inv.displayAnchor = inventoryDisplayAnchor;
+
             //somewhat temp? difficutl to say, it works
             scoreboard.players.Add(playerObj.GetComponent<Player>());
             scoreboard.scores.Add(0);

@@ -68,6 +68,7 @@ public class Board : MonoBehaviour
         Vector3 pos = oldCard.transform.position;
 
         // Add to inventory
+        field[x][y] = null;
         GameManager.currentPlayerTurn.GetComponent<Inventory>().AddItem(oldCard);
 
         // If deck is empty, just leave it empty
