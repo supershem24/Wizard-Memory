@@ -1150,7 +1150,7 @@ Transform:
   m_GameObject: {fileID: 133803962}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.134, y: 3.307, z: -6.346}
+  m_LocalPosition: {x: 6.52, y: 3.307, z: -3.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4886,7 +4886,7 @@ Transform:
   m_GameObject: {fileID: 625058749}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.179, y: 3.5, z: 6.233}
+  m_LocalPosition: {x: -6.2, y: 3.5, z: 3.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6882,7 +6882,8 @@ MonoBehaviour:
   playerPrefab: {fileID: 7111882385132605468, guid: 43960186b03686d40b29786da42d78b2, type: 3}
   deck: {fileID: 0}
   scoreboard: {fileID: 0}
-  inventoryDisplayAnchor: {fileID: 1952173463}
+  inventoryDisplayAnchor:
+  - {fileID: 0}
 --- !u!4 &846502353
 Transform:
   m_ObjectHideFlags: 0
@@ -8690,7 +8691,7 @@ Transform:
   m_GameObject: {fileID: 1232776319}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 3.53, z: 0}
+  m_LocalPosition: {x: 0, y: 5.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13045,7 +13046,7 @@ Transform:
   m_GameObject: {fileID: 1958619885}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.134, y: 3.5, z: 6.39}
+  m_LocalPosition: {x: 6.02, y: 3.5, z: 3.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14125,7 +14126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraSwitch
   mainCamera: {fileID: 730281747}
-  inventoryCamera: {fileID: 379689616}
+  inventoryCameras: []
 --- !u!4 &2063986568
 Transform:
   m_ObjectHideFlags: 0
