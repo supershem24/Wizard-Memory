@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class MinorSpark : MonoBehaviour
+public class MinorSpark : Potion
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    internal override void SetAttributes()
     {
-        
+        points = 2;
+        rarity = PotionRarity.Common;
     }
 
-    // Update is called once per frame
-    void Update()
+    //Gain 3 points.
+    internal override void PotionEffect()
     {
-        
+        GameManager.currentPlayerTurn.AddScore(3);
     }
 }

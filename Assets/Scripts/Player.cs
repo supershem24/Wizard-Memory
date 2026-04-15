@@ -43,14 +43,16 @@ public abstract class Player : MonoBehaviour
         return inventory.items[0];
     }
 
+    //Add an ingredient to the player's inventory (NEEDS FRONT END INTEGRATION)
     public void AddIngredient(Card ingredient)
     {
-
+        inventory.AddItem(ingredient);
     }
 
+    //Remove an ingredient from the player's inventory (NEEDS FRONT END INTEGRATION)
     public void RemoveIngredient(Card ingredient)
     {
-
+        inventory.RemoveItem(ingredient);
     }
 
 

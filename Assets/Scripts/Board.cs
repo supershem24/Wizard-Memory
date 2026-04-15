@@ -5,7 +5,7 @@ public class Board : MonoBehaviour
     public const int LAYOUTWIDTH = 4;
     public const int LAYOUTHEIGHT = 4;
     const float CARDPLACEMENTHEIGHT = 0.5f;
-    static public float BOARDSCALE;
+    static public float BOARDSCALE; //allows the baord to be scaled differently and still have everything work
 
     [SerializeField]
     Vector3 BOARDCENTER;

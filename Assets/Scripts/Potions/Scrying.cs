@@ -1,16 +1,16 @@
 using UnityEngine;
 
-public class Scrying : MonoBehaviour
+public class Scrying : Potion
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    internal override void SetAttributes()
     {
-        
+        points = 2;
+        rarity = PotionRarity.Common;
     }
 
-    // Update is called once per frame
-    void Update()
+    //Peek at 2 tiles.
+    internal override void PotionEffect()
     {
-        
+
     }
 }

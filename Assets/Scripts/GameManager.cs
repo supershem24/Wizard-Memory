@@ -218,6 +218,13 @@ public class GameManager : MonoBehaviour
 
     void ResetCards()
     {
+        if (Smuggling.smugglingUsed)
+        {
+            HandleMatch();
+            playerTurn = false;
+            Smuggling.smugglingUsed = false;
+        }
+
         secondCard.Flip();
         secondCard = null;
 

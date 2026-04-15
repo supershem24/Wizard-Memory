@@ -1,16 +1,18 @@
 using UnityEngine;
 
-public class Smuggling : MonoBehaviour
+public class Smuggling : Potion
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static bool smugglingUsed = false;
+
+    internal override void SetAttributes()
     {
-        
+        points = 2;
+        rarity = PotionRarity.Common;
     }
 
-    // Update is called once per frame
-    void Update()
+    //Gain all revealed ingredients this turn when matching, even if you fail to make a match.
+    internal override void PotionEffect()
     {
-        
+        smugglingUsed = true;
     }
 }

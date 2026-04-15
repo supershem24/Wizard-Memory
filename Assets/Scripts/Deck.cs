@@ -48,6 +48,7 @@ public class Deck : MonoBehaviour
 
         // Create the Card
         GameObject card = Instantiate(cardPrefab);
+            //scale the cards to the current board size
         card.transform.localScale = new Vector3(Board.BOARDSCALE, Board.BOARDSCALE, Board.BOARDSCALE);
         Card c = card.GetComponent<Card>();
         c.ResetCard();

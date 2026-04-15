@@ -1,16 +1,18 @@
 using UnityEngine;
 
-public class Transforming : MonoBehaviour
+
+public class Transforming : Potion
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    internal override void SetAttributes()
     {
-        
+        points = 2;
+        rarity = PotionRarity.Common;
     }
 
-    // Update is called once per frame
-    void Update()
+    //Replace any non-Perfect ingredient required to brew a potion with any ingredient. (NOT CERTAIN HOW TO DO THIS)
+    internal override void PotionEffect()
     {
-        
+
     }
 }

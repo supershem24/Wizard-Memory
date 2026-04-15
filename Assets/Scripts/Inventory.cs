@@ -43,7 +43,21 @@ public class Inventory : MonoBehaviour
         Debug.Log("Added to inventory: " + ingredient);
     }
 
-    
+    //Removes the item from the inventory (DOES NOT DESTROY THE GAME OBJECT, JUST REMOVES IT FROM THE LIST)
+    public Card RemoveItem(Card ingredient)
+    {
+        if (items.Contains(ingredient))
+        {
+            items.Remove(ingredient);
+            Debug.Log("Removed from inventory: " + ingredient);
+            return ingredient;
+        }
+        else
+        {
+            Debug.LogWarning("Attempted to remove an item that is not in the inventory: " + ingredient);
+            return null;
+        }
+    }
 
 
     void Start()

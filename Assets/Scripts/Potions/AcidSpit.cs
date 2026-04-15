@@ -1,16 +1,21 @@
 using UnityEngine;
+using System;
 
-public class AcidSpit : MonoBehaviour
+/// <summary>
+/// Potion Effect:
+/// 
+/// </summary>
+public class AcidSpit : Potion
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    internal override void SetAttributes()
     {
-        
+        //points = ;
+        //rarity = ;
     }
 
-    // Update is called once per frame
-    void Update()
+    //
+    internal override void PotionEffect()
     {
-        
+
     }
 }
