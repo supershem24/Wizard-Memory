@@ -1,15 +1,17 @@
+using NUnit.Framework;
 using UnityEngine;
+using System.Collections.Generic;
 
 public abstract class Player : MonoBehaviour
 {
     int score = 0;
-    Inventory inventory;
+    public Inventory inventory;
     public int getScore() { return score; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        inventory = GetComponent<Inventory>();
+        inventory = GetComponentInChildren<Inventory>();
     }
 
     // Update is called once per frame
@@ -32,6 +34,13 @@ public abstract class Player : MonoBehaviour
             return;
     }
 
+    internal virtual void SelectCards()
+    {
+        //past here it has to be the current player's turn to interact with things
+        if (!(GameManager.currentPlayerTurn == this) || !GameManager.playerTurn)
+            return;
+    }
+
     /// <summary>
     /// Potion Methods
     /// </summary>
@@ -39,8 +48,17 @@ public abstract class Player : MonoBehaviour
     // Choose an ingredient (NEEDS FRONT END INTEGRATION)
     public Card ChooseIngredient()
     {
+        /*List<int> rands = new List<int>();
+        for (int i = 0; i < amount; i++)
+        {
+            Random.Range(0, inventory.items.Count);
+            //rands.Add();
+            
+        }*/
+
+
         int rand = Random.Range(0, inventory.items.Count);
-        return inventory.items[0];
+        return inventory.items[rand];
     }
 
     //Add an ingredient to the player's inventory (NEEDS FRONT END INTEGRATION)

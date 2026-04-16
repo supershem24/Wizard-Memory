@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class Frenzy : MonoBehaviour
+public class Frenzy : Potion
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    internal override void SetAttributes()
     {
-        
+        points = 2;
+        rarity = PotionRarity.Common;
     }
 
-    // Update is called once per frame
-    void Update()
+    //If you make no matches this turn, steal 2 ingredients from an opponent.
+    internal override void PotionEffect()
     {
-        
+        Player player = GameManager.instance.ChoosePlayer();
+        //Card ingredient = player.ChooseIngredient();
+        //player.RemoveIngredient(ingredient);
+        //GameManager.currentPlayerTurn.AddIngredient(ingredient);
     }
 }

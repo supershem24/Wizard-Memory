@@ -24,8 +24,6 @@ public class GameManager : MonoBehaviour
     public static Player currentPlayerTurn;
     List<Player> players = new List<Player>();
 
-    public Transform[] inventoryDisplayAnchor;
-
     /// <summary>
     /// INGREDIENT DICTIONARY
     /// </summary>
@@ -125,6 +123,29 @@ public class GameManager : MonoBehaviour
         //TEMPORARY, CHANGE LATER
         int amountOfPlayers = 2; 
         Type[] playerTypes = { typeof(Human), typeof(RandyAI)};
+
+        List<int> inventoryRotateChanges = new List<int> () {0};
+
+        // get rotation values around the table based on the amount of players
+        switch (amountOfPlayers)
+        {
+            case 2:
+                inventoryRotateChanges.Add(180);
+                break;
+            case 3:
+                inventoryRotateChanges.Add(-90);
+                inventoryRotateChanges.Add(90);
+                break;
+            case 4:
+                inventoryRotateChanges.Add(-90);
+                inventoryRotateChanges.Add(180);
+                inventoryRotateChanges.Add(90);
+                break;
+            default:
+                Debug.LogError("Invalid number of players! Defaulting to 2.");
+                inventoryRotateChanges.Add(180);
+                break;
+        }
         
         //For each player, do these
         for (int i = 0; i < amountOfPlayers; i++)
@@ -134,12 +155,15 @@ public class GameManager : MonoBehaviour
             playerObj.AddComponent(playerTypes[i]);
             players.Add(playerObj.GetComponent<Player>());
 
-            Inventory inv = playerObj.GetComponent<Inventory>();
+            Inventory inv = playerObj.GetComponentInChildren<Inventory>();
             if (inv == null)
             {
-                inv = playerObj.AddComponent<Inventory>();
+                //inv = playerObj.AddComponent<Inventory>();
+                Debug.LogError("Player prefab is missing an Inventory component in its children!");
             }
-            inv.displayAnchor = inventoryDisplayAnchor[i];
+            //Changes inventory position
+            inv.gameObject.transform.position = board.transform.position + new Vector3(0, Board.BOARDSCALE * -0.25f, -Board.BOARDSCALE * 5f);
+            inv.gameObject.transform.RotateAround(board.transform.position, Vector3.up, inventoryRotateChanges[i]);
 
             //somewhat temp? difficutl to say, it works
             scoreboard.players.Add(playerObj.GetComponent<Player>());

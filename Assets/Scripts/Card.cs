@@ -45,7 +45,7 @@ public class Card : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     /*void OnMouseDown()
@@ -57,13 +57,23 @@ public class Card : MonoBehaviour
         }
     }*/
 
+    //What happens when the card is clicked, only thing that should be called when a card is clicked
+    public void OnCardClicked()
+    {
+        if (GameManager.playerTurn && !isFlipped)
+        {
+            Flip();
+            GameManager.instance.CardSelected(this);
+        }
+    }
+
     //Flip the Card faceup
     public void Flip()
     {
         isFlipped = !isFlipped;
         //transform.position = tempPos;
-        //rigidbody.AddForce(new Vector3(0, 100, 0));
-        //rigidbody.AddTorque(new Vector3(-50, 0, 0)); ANIMATION ATTEMPT, NOT WORKING
+        //rigidbody.AddForce(new Vector3(0, 120*gameObject.transform.localScale.y, 0));
+        //rigidbody.AddTorque(new Vector3(-50, 0, 0)); //ANIMATION ATTEMPT, NOT WORKING
         if (isFlipped) { transform.rotation = Quaternion.Euler(0, 0, 0); }
         else { transform.rotation = Quaternion.Euler(0, 0, 180); }
     }

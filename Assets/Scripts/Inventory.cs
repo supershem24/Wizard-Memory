@@ -5,7 +5,6 @@ public class Inventory : MonoBehaviour
 {
     public List<Card> items = new List<Card>();
 
-    public Transform displayAnchor;
     public float spacing = 1.2f;
     public int columns = 4;
 
@@ -16,7 +15,7 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Card ingredient)
     {
-        ingredient.transform.SetParent(displayAnchor);
+        ingredient.transform.SetParent(this.transform);
 
         int index = items.Count;
 

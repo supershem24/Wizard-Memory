@@ -69,7 +69,7 @@ public class Board : MonoBehaviour
 
         // Add to inventory
         field[x][y] = null;
-        GameManager.currentPlayerTurn.GetComponent<Inventory>().AddItem(oldCard);
+        GameManager.currentPlayerTurn.inventory.AddItem(oldCard);
 
         // If deck is empty, just leave it empty
         if (currentDeck.deckCards.Count == 0)

@@ -22,12 +22,11 @@ public class Human : Player
                 if (!(GameManager.currentPlayerTurn == this) || !GameManager.playerTurn)
                     return;
 
-                //for interacting with unflipped cards
-                if (selectedObject.GetComponent<Card>() != null && !selectedObject.GetComponent<Card>().IsFlipped)
+                //for interacting with cards
+                if (selectedObject.GetComponent<Card>() != null)
                 {
-                    Card selectedCard = selectedObject.GetComponent<Card>();
-                    selectedCard.Flip();
-                    GameManager.instance.CardSelected(selectedCard);
+                    //SELECT CARDS WILL GO HERE INSTAD
+                    selectedObject.GetComponent<Card>().OnCardClicked();
                 }
             }
         }
