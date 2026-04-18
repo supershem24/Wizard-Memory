@@ -16,9 +16,21 @@ public class ThievesMark : Potion
     //Steal an ingredient from an opponent.
     internal override void PotionEffect()
     {
-        Player player = GameManager.instance.ChoosePlayer();
-        Card ingredient = player.ChooseIngredient();
+        currentPotion = this;
+        GameManager.instance.ChoosePlayer();
+    }
+
+    public override void AfterPlayerSelect(Player player)
+    {
+        //getIngredient = true;
+        player.ChooseIngredient();
+    }
+
+    public override void AfterCardSelect(Player player, Card ingredient)
+    {
+
         player.RemoveIngredient(ingredient);
         GameManager.currentPlayerTurn.AddIngredient(ingredient);
+        currentPotion = null;
     }
 }

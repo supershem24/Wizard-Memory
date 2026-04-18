@@ -11,7 +11,7 @@ public class Frenzy : Potion
     //If you make no matches this turn, steal 2 ingredients from an opponent.
     internal override void PotionEffect()
     {
-        Player player = GameManager.instance.ChoosePlayer();
+        GameManager.instance.ChoosePlayer();
         //Card ingredient = player.ChooseIngredient();
         //player.RemoveIngredient(ingredient);
         //GameManager.currentPlayerTurn.AddIngredient(ingredient);

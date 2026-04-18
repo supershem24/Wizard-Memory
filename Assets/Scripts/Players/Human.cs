@@ -21,12 +21,28 @@ public class Human : Player
                 //past here it has to be the player's turn to interact with things
                 if (!(GameManager.currentPlayerTurn == this) || !GameManager.playerTurn)
                     return;
+                
+                //if the selected object is a player icon, and the player potion select is true (TODO CHANGE HERE FOR ICON)
+                if(selectedObject.GetComponent<Player>() != null && getPlayer)
+                {
+                    Potion.currentPotion.AfterPlayerSelect(selectedObject.GetComponent<Player>());
+                }
+                //send the selected player to the current potion
 
                 //for interacting with cards
                 if (selectedObject.GetComponent<Card>() != null)
                 {
+                    if(requestedParent == CardSelectionType.Inventory && selectedObject.transform.parent.tag == "Inventory")
+                    {
+                        //selectedObject.GetComponent<Card>().SelectCard();
+                        return;
+                    }
+                    else if(requestedParent == CardSelectionType.BoardFlip && selectedObject.transform.parent == GameManager.instance.board)
+                    {
+                        selectedObject.GetComponent<Card>().OnCardClicked();
+                        return;
+                    }
                     //SELECT CARDS WILL GO HERE INSTAD
-                    selectedObject.GetComponent<Card>().OnCardClicked();
                 }
             }
         }

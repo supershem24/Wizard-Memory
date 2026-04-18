@@ -4,9 +4,15 @@ using System.Collections.Generic;
 
 public abstract class Player : MonoBehaviour
 {
+    public static CardSelectionType requestedParent = CardSelectionType.BoardFlip;
+    public enum CardSelectionType { BoardFlip, Inventory, BoardSeek, BoardTrap }
+
     int score = 0;
     public Inventory inventory;
     public int getScore() { return score; }
+
+    public bool getIngredient = false;
+    public bool getPlayer = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,31 +40,28 @@ public abstract class Player : MonoBehaviour
             return;
     }
 
-    internal virtual void SelectCards()
+    //NEEEED FOR FRONT INTEGRATION ON INTERACTING WITH CARDS
+
+    /*internal virtual void SelectCards()
     {
         //past here it has to be the current player's turn to interact with things
         if (!(GameManager.currentPlayerTurn == this) || !GameManager.playerTurn)
             return;
-    }
+    }*/
 
     /// <summary>
     /// Potion Methods
     /// </summary>
 
     // Choose an ingredient (NEEDS FRONT END INTEGRATION)
-    public Card ChooseIngredient()
+    public void ChooseIngredient()
     {
-        /*List<int> rands = new List<int>();
-        for (int i = 0; i < amount; i++)
-        {
-            Random.Range(0, inventory.items.Count);
-            //rands.Add();
-            
-        }*/
+        //Change camera scene (TODO: Change to inventory camera for the current player)
+        CameraSwitch.wantedCamera = GameManager.instance.cameraManager.topDownCamera;
+        //cameraManager.CycleCamera();
 
-
-        int rand = Random.Range(0, inventory.items.Count);
-        return inventory.items[rand];
+        //Set boolean to true to choose an ingriedient for a potion
+        getIngredient = true;
     }
 
     //Add an ingredient to the player's inventory (NEEDS FRONT END INTEGRATION)

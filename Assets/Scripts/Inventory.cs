@@ -48,6 +48,7 @@ public class Inventory : MonoBehaviour
         if (items.Contains(ingredient))
         {
             items.Remove(ingredient);
+            ingredient.transform.SetParent(null);
             Debug.Log("Removed from inventory: " + ingredient);
             return ingredient;
         }

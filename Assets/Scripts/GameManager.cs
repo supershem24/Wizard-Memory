@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public GameObject playerPrefab;
     public Deck deck;
     public Scoreboard scoreboard;
+    public CameraSwitch cameraManager;
 
     private Card firstCard;
     private Card secondCard;
@@ -119,6 +120,7 @@ public class GameManager : MonoBehaviour
         board = GameObject.FindGameObjectWithTag("Board").GetComponent<Board>();
         deck = GameObject.FindGameObjectWithTag("Deck").GetComponent<Deck>();
         scoreboard = GameObject.FindGameObjectWithTag("Scoreboard").GetComponent<Scoreboard>();
+        cameraManager = GameObject.FindGameObjectWithTag("CameraManager").GetComponent<CameraSwitch>();
 
         //TEMPORARY, CHANGE LATER
         int amountOfPlayers = 2; 
@@ -287,10 +289,14 @@ public class GameManager : MonoBehaviour
     /// </summary>
 
     //Choose a player from the current players perspective (PLACEHOLDER)
-    public Player ChoosePlayer()
+    public void ChoosePlayer()
     {
-        int rand = UnityEngine.Random.Range(1, players.Count);
-        return players[rand];
+        //Change camera scene
+        CameraSwitch.wantedCamera = cameraManager.topDownCamera;
+        cameraManager.CycleCamera();
+
+        //Set boolean to true to choose a player for a potion
+        currentPlayerTurn.getPlayer = true;
     }
 
 

@@ -7,6 +7,7 @@ using System;
 
 public class Card : MonoBehaviour
 {
+    
 
     [SerializeField]
     MeshRenderer faceMesh;

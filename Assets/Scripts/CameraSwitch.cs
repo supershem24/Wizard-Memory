@@ -4,18 +4,17 @@ public class CameraSwitch : MonoBehaviour
 {
     public Camera mainCamera;
     public Camera[] inventoryCameras; // Player1, Player2, AI
+    public Camera topDownCamera;
+
+    public static Camera wantedCamera;
 
     private int currentIndex = -1;
 
     void Start()
     {
+        wantedCamera = mainCamera;
         // Start in gameplay mode
-        mainCamera.enabled = true;
-
-        foreach (Camera cam in inventoryCameras)
-        {
-            cam.enabled = false;
-        }
+        CycleCamera();
     }
 
     void Update()
@@ -26,12 +25,21 @@ public class CameraSwitch : MonoBehaviour
         }
     }
 
-    void CycleCamera()
+    public void CycleCamera()
     {
         mainCamera.enabled = false;
         foreach (Camera cam in inventoryCameras)
         {
             cam.enabled = false;
+        }
+        topDownCamera.enabled = false;
+
+        // Check if a specific camera is wanted
+        if (wantedCamera != null)
+        {
+            wantedCamera.enabled = true;
+            wantedCamera = null;
+            return;
         }
 
         // Next Camera Index

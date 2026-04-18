@@ -51,6 +51,7 @@ public class Board : MonoBehaviour
 
                 Vector3 pos = new Vector3(BOARDCENTER.x + GRIDGAP * (1.5f - i), BOARDCENTER.y + CARDPLACEMENTHEIGHT, BOARDCENTER.z + GRIDGAP * (1.5f - j));
                 currentCard.transform.position = pos;
+                currentCard.transform.SetParent(this.transform);
 
                 currentCard.ResetCard();
                 currentCard.SetGridPosition(i, j);
@@ -81,6 +82,7 @@ public class Board : MonoBehaviour
         Card newCard = currentDeck.DealCard();
 
         newCard.transform.position = pos;
+        newCard.transform.SetParent(this.transform);
         newCard.SetGridPosition(x, y);
 
         field[x][y] = newCard;
