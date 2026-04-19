@@ -8,6 +8,8 @@ public class MainMenu : MonoBehaviour
     public GameObject locationSelect;  // Location buttons
     public GameObject playerNumber;    // Player count buttons
 
+    public GameObject noSelectionWarning;
+
     // Stored choices
     private string selectedScene;
     private int selectedPlayers;
@@ -15,6 +17,10 @@ public class MainMenu : MonoBehaviour
     public void OpenSelect()
     {
         mainButtons.SetActive(false);
+        if (noSelectionWarning.activeSelf)
+        {
+            noSelectionWarning.SetActive(false);
+        }
         locationSelect.SetActive(true);
     }
 
@@ -49,7 +55,8 @@ public class MainMenu : MonoBehaviour
         }
         else
         {
-            Debug.Log("No location selected yet.");
+            //Debug.Log("No location selected yet.");
+            noSelectionWarning.SetActive(true);
         }
     }
 
