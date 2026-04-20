@@ -124,8 +124,8 @@ public class GameManager : MonoBehaviour
         cameraManager = GameObject.FindGameObjectWithTag("CameraManager").GetComponent<CameraSwitch>();
 
         //TEMPORARY, CHANGE LATER
-        int amountOfPlayers = 2; 
-        Type[] playerTypes = { typeof(Human), typeof(RandyAI)};
+        int amountOfPlayers = PlayerPrefs.GetInt("Players", 2);
+        Type[] playerTypes = { typeof(Human), typeof(RandyAI), typeof(RandyAI), typeof(RandyAI) };
 
         List<int> inventoryRotateChanges = new List<int> () {0};
 
@@ -146,6 +146,7 @@ public class GameManager : MonoBehaviour
                 break;
             default:
                 Debug.LogError("Invalid number of players! Defaulting to 2.");
+                amountOfPlayers = 2;
                 inventoryRotateChanges.Add(180);
                 break;
         }
