@@ -12,7 +12,9 @@ public abstract class Potion : MonoBehaviour
 
     public static Potion currentPotion;
 
-    public List<GameObject> potionObjects;
+
+    internal Player targetPlayer;
+    public List<Card> potionCards;
 
 
     /// <summary>
@@ -30,7 +32,13 @@ public abstract class Potion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //FOR TESTING POTIONS REMOVE LATER
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Debug.Log("Testing Potion");
+            ThievesMark potion = gameObject.AddComponent<ThievesMark>();
+            potion.PotionEffect();
+        }
     }
 
     // Set the attributes of the potion (points, effects, etc.)
@@ -51,7 +59,7 @@ public abstract class Potion : MonoBehaviour
 
     }
 
-    public virtual void AfterCardSelect(Player player, Card ingredient)
+    public virtual void AfterCardSelect(Card ingredient)
     {
 
     }

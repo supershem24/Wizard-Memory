@@ -22,15 +22,17 @@ public class ThievesMark : Potion
 
     public override void AfterPlayerSelect(Player player)
     {
-        //getIngredient = true;
+        targetPlayer = player;
         player.ChooseIngredient();
     }
 
-    public override void AfterCardSelect(Player player, Card ingredient)
+    public override void AfterCardSelect(Card ingredient)
     {
 
-        player.RemoveIngredient(ingredient);
+        targetPlayer.RemoveIngredient(ingredient);
         GameManager.currentPlayerTurn.AddIngredient(ingredient);
+        CameraSwitch.wantedCamera = GameManager.instance.cameraManager.mainCamera;
+        GameManager.instance.cameraManager.CycleCamera();
         currentPotion = null;
     }
 }

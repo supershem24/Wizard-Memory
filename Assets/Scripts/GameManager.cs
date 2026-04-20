@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public Board board;
     public GameObject playerPrefab;
+    public GameObject playerIcon;
     public Deck deck;
     public Scoreboard scoreboard;
     public CameraSwitch cameraManager;
@@ -157,6 +158,9 @@ public class GameManager : MonoBehaviour
             playerObj.AddComponent(playerTypes[i]);
             players.Add(playerObj.GetComponent<Player>());
 
+            playerObj.transform.position = board.transform.position + new Vector3(0, Board.BOARDSCALE * 1, -Board.BOARDSCALE * 5f);
+            playerObj.transform.RotateAround(board.transform.position, Vector3.up, inventoryRotateChanges[i]);
+
             Inventory inv = playerObj.GetComponentInChildren<Inventory>();
             if (inv == null)
             {
@@ -164,8 +168,8 @@ public class GameManager : MonoBehaviour
                 Debug.LogError("Player prefab is missing an Inventory component in its children!");
             }
             //Changes inventory position
-            inv.gameObject.transform.position = board.transform.position + new Vector3(0, Board.BOARDSCALE * -0.25f, -Board.BOARDSCALE * 5f);
-            inv.gameObject.transform.RotateAround(board.transform.position, Vector3.up, inventoryRotateChanges[i]);
+            Debug.Log(inventoryRotateChanges[i]);
+            inv.gameObject.transform.position = playerObj.transform.position + new Vector3(0, Board.BOARDSCALE * -1.25f, 0);
 
             //somewhat temp? difficutl to say, it works
             scoreboard.players.Add(playerObj.GetComponent<Player>());
@@ -294,6 +298,14 @@ public class GameManager : MonoBehaviour
         //Change camera scene
         CameraSwitch.wantedCamera = cameraManager.topDownCamera;
         cameraManager.CycleCamera();
+
+        for (int i = 0; i < players.Count; i++)
+        {
+            Vector3 pos = Vector3.MoveTowards(board.transform.position, players[i].transform.position, 4f*Board.BOARDSCALE);
+            GameObject playerIconObj = Instantiate(playerIcon, pos, players[i].transform.rotation);
+            PlayerIcon playerIconComponent = playerIconObj.GetComponent<PlayerIcon>();
+            playerIconComponent.connectedPlayer = players[i];
+        }
 
         //Set boolean to true to choose a player for a potion
         currentPlayerTurn.getPlayer = true;

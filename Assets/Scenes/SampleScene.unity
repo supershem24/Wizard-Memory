@@ -196,6 +196,53 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd8a1316d45f9c844afb68d3a949124a, type: 3}
+--- !u!1 &164391898
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 164391900}
+  - component: {fileID: 164391899}
+  m_Layer: 0
+  m_Name: Potiontesting
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &164391899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164391898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b43330ff60fa6c44bc7f51d284b9253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AcidSpit
+  points: 0
+  rarity: 0
+  potionCards: []
+--- !u!4 &164391900
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164391898}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.50572, y: 0.46116, z: 2.75983}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1580,6 +1627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   board: {fileID: 0}
   playerPrefab: {fileID: 7111882385132605468, guid: 43960186b03686d40b29786da42d78b2, type: 3}
+  playerIcon: {fileID: 1675402955443707893, guid: 106bef989e155404b9b31878a401186c, type: 3}
   deck: {fileID: 0}
   scoreboard: {fileID: 0}
   cameraManager: {fileID: 0}
@@ -1814,3 +1862,4 @@ SceneRoots:
   - {fileID: 1165356817}
   - {fileID: 1405250906}
   - {fileID: 2091083009}
+  - {fileID: 164391900}

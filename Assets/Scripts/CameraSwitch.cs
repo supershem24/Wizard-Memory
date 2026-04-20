@@ -7,6 +7,7 @@ public class CameraSwitch : MonoBehaviour
     public Camera topDownCamera;
 
     public static Camera wantedCamera;
+    public static Camera currentCamera;
 
     private int currentIndex = -1;
 
@@ -38,6 +39,7 @@ public class CameraSwitch : MonoBehaviour
         if (wantedCamera != null)
         {
             wantedCamera.enabled = true;
+            currentCamera = wantedCamera;
             wantedCamera = null;
             return;
         }

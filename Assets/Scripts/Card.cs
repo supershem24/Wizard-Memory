@@ -68,6 +68,12 @@ public class Card : MonoBehaviour
         }
     }
 
+    //does ui for selecting a card
+    public void SelectCard()
+    {
+
+    }
+
     //Flip the Card faceup
     public void Flip()
     {
@@ -104,6 +110,7 @@ public class Card : MonoBehaviour
         //make the top of the card the correct face based on the ingredient
         faceMesh.material = Resources.Load<Material>("2DMaterials/" + ingredient + "M");
     }
+
 
     public void SetGridPosition(int x, int y)
     {

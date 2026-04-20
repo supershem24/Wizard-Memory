@@ -61,7 +61,7 @@ public abstract class Player : MonoBehaviour
         //cameraManager.CycleCamera();
 
         //Set boolean to true to choose an ingriedient for a potion
-        getIngredient = true;
+        requestedParent = CardSelectionType.Inventory;
     }
 
     //Add an ingredient to the player's inventory (NEEDS FRONT END INTEGRATION)

@@ -8,7 +8,7 @@ public class Human : Player
         if (Input.GetMouseButtonDown(0))
         {
             // Create a ray from the mouse position into the world
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = CameraSwitch.currentCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             // Perform the raycast and check if it hits anything
@@ -23,21 +23,23 @@ public class Human : Player
                     return;
                 
                 //if the selected object is a player icon, and the player potion select is true (TODO CHANGE HERE FOR ICON)
-                if(selectedObject.GetComponent<Player>() != null && getPlayer)
+                if(selectedObject.GetComponent<PlayerIcon>() != null && getPlayer)
                 {
-                    Potion.currentPotion.AfterPlayerSelect(selectedObject.GetComponent<Player>());
+                    getPlayer = false;
+                    Potion.currentPotion.AfterPlayerSelect(selectedObject.GetComponent<PlayerIcon>().connectedPlayer);
                 }
                 //send the selected player to the current potion
 
                 //for interacting with cards
                 if (selectedObject.GetComponent<Card>() != null)
                 {
-                    if(requestedParent == CardSelectionType.Inventory && selectedObject.transform.parent.tag == "Inventory")
+                    if (requestedParent == CardSelectionType.Inventory && selectedObject.transform.parent.tag == "Inventory")
                     {
-                        //selectedObject.GetComponent<Card>().SelectCard();
+                        selectedObject.GetComponent<Card>().SelectCard();
+                        Potion.currentPotion.AfterCardSelect(selectedObject.GetComponent<Card>());
                         return;
                     }
-                    else if(requestedParent == CardSelectionType.BoardFlip && selectedObject.transform.parent == GameManager.instance.board)
+                    else if(requestedParent == CardSelectionType.BoardFlip && selectedObject.transform.parent == GameManager.instance.board.transform)
                     {
                         selectedObject.GetComponent<Card>().OnCardClicked();
                         return;
