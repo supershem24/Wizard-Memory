@@ -149,7 +149,8 @@ public class GameManager : MonoBehaviour
                 inventoryRotateChanges.Add(180);
                 break;
         }
-        
+        cameraManager.inventoryCameras = new Camera[amountOfPlayers];
+
         //For each player, do these
         for (int i = 0; i < amountOfPlayers; i++)
         {
@@ -170,6 +171,9 @@ public class GameManager : MonoBehaviour
             //Changes inventory position
             Debug.Log(inventoryRotateChanges[i]);
             inv.gameObject.transform.position = playerObj.transform.position + new Vector3(0, Board.BOARDSCALE * -1.25f, 0);
+
+            //for camera
+            cameraManager.inventoryCameras[i] = playerObj.GetComponentInChildren<Camera>();
 
             //somewhat temp? difficutl to say, it works
             scoreboard.players.Add(playerObj.GetComponent<Player>());
@@ -292,23 +296,37 @@ public class GameManager : MonoBehaviour
     /// POTION HELPERS
     /// </summary>
 
-    //Choose a player from the current players perspective (PLACEHOLDER)
-    public void ChoosePlayer()
+    public void ChoosePlayer(bool allowYourselfChoose = false)
     {
         //Change camera scene
         CameraSwitch.wantedCamera = cameraManager.topDownCamera;
         cameraManager.CycleCamera();
 
-        for (int i = 0; i < players.Count; i++)
+        int j = 0;
+        if (!allowYourselfChoose)
+        {
+            j += 1;
+        }
+        for (int i = j; i < players.Count; i++)
         {
             Vector3 pos = Vector3.MoveTowards(board.transform.position, players[i].transform.position, 4f*Board.BOARDSCALE);
             GameObject playerIconObj = Instantiate(playerIcon, pos, players[i].transform.rotation);
+            playerIconObj.transform.SetParent(players[i].transform);
             PlayerIcon playerIconComponent = playerIconObj.GetComponent<PlayerIcon>();
             playerIconComponent.connectedPlayer = players[i];
         }
 
         //Set boolean to true to choose a player for a potion
         currentPlayerTurn.getPlayer = true;
+    }
+
+    public void RemoveAllPlayerIcons()
+    {
+        foreach (Player player in GameManager.instance.players)
+        {
+            if (player.GetComponentInChildren<PlayerIcon>() != null)
+                Destroy(player.GetComponentInChildren<PlayerIcon>().gameObject);
+        }
     }
 
 

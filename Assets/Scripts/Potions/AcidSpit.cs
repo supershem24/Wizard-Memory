@@ -17,5 +17,6 @@ public class AcidSpit : Potion
     internal override void PotionEffect()
     {
         currentPotion = this;
+        EndPotionEffect();
     }
 }

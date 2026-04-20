@@ -34,5 +34,6 @@ public class ThievesMark : Potion
         CameraSwitch.wantedCamera = GameManager.instance.cameraManager.mainCamera;
         GameManager.instance.cameraManager.CycleCamera();
         currentPotion = null;
+        EndPotionEffect();
     }
 }

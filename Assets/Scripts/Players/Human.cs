@@ -22,11 +22,13 @@ public class Human : Player
                 if (!(GameManager.currentPlayerTurn == this) || !GameManager.playerTurn)
                     return;
                 
-                //if the selected object is a player icon, and the player potion select is true (TODO CHANGE HERE FOR ICON)
+                //if the selected object is a player icon, and the player potion select is true
                 if(selectedObject.GetComponent<PlayerIcon>() != null && getPlayer)
                 {
                     getPlayer = false;
                     Potion.currentPotion.AfterPlayerSelect(selectedObject.GetComponent<PlayerIcon>().connectedPlayer);
+                    GameManager.instance.RemoveAllPlayerIcons();
+                    return;
                 }
                 //send the selected player to the current potion
 

@@ -57,8 +57,8 @@ public abstract class Player : MonoBehaviour
     public void ChooseIngredient()
     {
         //Change camera scene (TODO: Change to inventory camera for the current player)
-        CameraSwitch.wantedCamera = GameManager.instance.cameraManager.topDownCamera;
-        //cameraManager.CycleCamera();
+        CameraSwitch.wantedCamera = GetComponentInChildren<Camera>();
+        GameManager.instance.cameraManager.CycleCamera();
 
         //Set boolean to true to choose an ingriedient for a potion
         requestedParent = CardSelectionType.Inventory;

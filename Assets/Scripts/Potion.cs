@@ -63,4 +63,11 @@ public abstract class Potion : MonoBehaviour
     {
 
     }
+
+    internal void EndPotionEffect()
+    {
+        currentPotion = null;
+        Player.requestedParent = Player.CardSelectionType.BoardFlip;
+
+    }
 }
