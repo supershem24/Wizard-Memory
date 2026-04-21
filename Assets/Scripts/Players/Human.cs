@@ -19,7 +19,7 @@ public class Human : Player
                 //Debug.Log("Selected Object: " + selectedObject.name);
 
                 //past here it has to be the player's turn to interact with things
-                if (!(GameManager.currentPlayerTurn == this) || !GameManager.playerTurn)
+                if (!(GameManager.currentPlayerTurn == this))
                     return;
                 
                 //if the selected object is a player icon, and the player potion select is true
@@ -41,7 +41,7 @@ public class Human : Player
                         Potion.currentPotion.AfterCardSelect(selectedObject.GetComponent<Card>());
                         return;
                     }
-                    else if(requestedParent == CardSelectionType.BoardFlip && selectedObject.transform.parent == GameManager.instance.board.transform)
+                    else if(requestedParent == CardSelectionType.BoardFlip && selectedObject.transform.parent == GameManager.instance.board.transform && GameManager.playerTurn)
                     {
                         selectedObject.GetComponent<Card>().OnCardClicked();
                         return;
@@ -50,6 +50,11 @@ public class Human : Player
                 }
             }
         }
+    }
+
+    public override void AfterMatching()
+    {
+        GameManager.instance.endTurnButton.gameObject.SetActive(true);
     }
 
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     public Deck deck;
     public Scoreboard scoreboard;
     public CameraSwitch cameraManager;
+    public Button endTurnButton;
 
     private Card firstCard;
     private Card secondCard;
@@ -22,7 +24,7 @@ public class GameManager : MonoBehaviour
     private List<Card> matchedCards = new List<Card>();
 
     public static GameManager instance;
-    public static bool playerTurn;
+    public static bool playerTurn; //if the player is matching or still can match
     public static Player currentPlayerTurn;
     List<Player> players = new List<Player>();
 
@@ -122,6 +124,7 @@ public class GameManager : MonoBehaviour
         deck = GameObject.FindGameObjectWithTag("Deck").GetComponent<Deck>();
         scoreboard = GameObject.FindGameObjectWithTag("Scoreboard").GetComponent<Scoreboard>();
         cameraManager = GameObject.FindGameObjectWithTag("CameraManager").GetComponent<CameraSwitch>();
+        endTurnButton = GameObject.FindGameObjectWithTag("EndTurn").GetComponent<Button>();
 
         //TEMPORARY, CHANGE LATER
         int amountOfPlayers = PlayerPrefs.GetInt("Players", 2);
@@ -183,6 +186,8 @@ public class GameManager : MonoBehaviour
         currentPlayerTurn = players[0];
         Debug.Log(currentPlayerTurn + "'s Turn!");
         playerTurn = true;
+
+        endTurnButton.gameObject.SetActive(false);
 
         deck.CreateSampleDeck();
         deck.ShuffleDeck();
@@ -281,11 +286,12 @@ public class GameManager : MonoBehaviour
 
         matchedCards.Clear();
         firstCard = null;
-        SwitchPlayerTurn();
+        currentPlayerTurn.AfterMatching();
     }
 
-    void SwitchPlayerTurn()
+    public void SwitchPlayerTurn()
     {
+        endTurnButton.gameObject.SetActive(false);
         players.RemoveAt(0);
         players.Add(currentPlayerTurn);
         currentPlayerTurn = players[0];

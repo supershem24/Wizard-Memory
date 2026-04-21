@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public abstract class Player : MonoBehaviour
 {
     public static CardSelectionType requestedParent = CardSelectionType.BoardFlip;
-    public enum CardSelectionType { BoardFlip, Inventory, BoardSeek, BoardTrap }
+    public enum CardSelectionType { BoardFlip, Inventory, BoardSeek, BoardTrap, None }
 
     int score = 0;
     public Inventory inventory;
@@ -48,6 +48,11 @@ public abstract class Player : MonoBehaviour
         if (!(GameManager.currentPlayerTurn == this) || !GameManager.playerTurn)
             return;
     }*/
+
+    public virtual void AfterMatching()
+    {
+        GameManager.instance.SwitchPlayerTurn();
+    }
 
     /// <summary>
     /// Potion Methods

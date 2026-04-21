@@ -10,6 +10,7 @@ TagManager:
   - Scoreboard
   - CameraManager
   - Inventory
+  - EndTurn
   layers:
   - Default
   - TransparentFX
